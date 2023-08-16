@@ -8,7 +8,6 @@ class FoodController < ApplicationController
   end
 
   def create
-    puts food_params
     @food = Food.new(food_params)
     if @food.save
       redirect_to new_food_path, notice: 'Food has been added.'
@@ -17,6 +16,14 @@ class FoodController < ApplicationController
       render :show
     end
   end
+
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy!
+    redirect_to food_path, notice: 'Post deleted!'
+  end
+
+  private 
 
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price)
