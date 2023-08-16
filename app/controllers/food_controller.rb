@@ -23,7 +23,7 @@ class FoodController < ApplicationController
     redirect_to food_path, notice: 'Post deleted!'
   end
 
-  private 
+  private
 
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price)
