@@ -6,8 +6,8 @@
        <p><%= food.name %></p>
        <p><%= food.measurement_unit %> gram</p>
         <p><%= food.price %></p>
+        <%= button_to "Delete", food_path(food), method: :delete %>
     </li>
 <% end %>
 <%= link_to 'Add Food', new_food_path %>
 </ul>
-
