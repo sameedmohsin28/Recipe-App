@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 =======
   # root "articles#index"
-  resources :food, only: [:index, :new, :create]
+  resources :food, only: [:index, :new, :create, :destroy]
   resources :recipes, only: [:index, :new, :create, :show, :destroy]
 >>>>>>> 2b9dacd (Add food controller routes)
   resources :public_recipes, only: [:index]
