@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # get 'food/index'
   devise_for :users
   get 'public_recipes/index'
   get 'inventories/index'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :food, only: [:index, :new, :create]
   resources :recipes, only: [:index, :new, :create, :show, :destroy]
   resources :public_recipes, only: [:index]
   resources :inventories, only: [:index, :new, :create, :show, :destroy]
