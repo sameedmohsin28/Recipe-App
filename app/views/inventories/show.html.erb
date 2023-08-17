@@ -7,8 +7,7 @@
     <li>
        <p><%= inventory_food.quantity %></p>
        <p><%= inventory_food.food.name %></p>
-       <button>Remove</button>
+       <%= button_to "Delete", inventory_inventory_food_path(@inventory, inventory_food.id), method: :delete %>
     </li>
 <% end %>
 </ul>
-
