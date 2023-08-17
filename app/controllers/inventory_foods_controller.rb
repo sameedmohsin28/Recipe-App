@@ -19,4 +19,11 @@ class InventoryFoodsController < ApplicationController
   def inventory_food_params
     params.require(:inventory_food).permit(:inventory_id, :quantity, :food_id)
   end
+
+  def destroy
+    @inventory = Inventory.find(params[:inventory_id])
+    @selected_food = @inventory.inventory_foods.find(params[:id])
+    @selected_food.destroy!
+    redirect_to @inventory, notice: 'Food has been removed!'
+  end
 end
