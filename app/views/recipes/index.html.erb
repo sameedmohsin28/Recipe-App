@@ -1,2 +1,19 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<p>Recipe Page...</p>
+
+<p>
+<%= button_to "Add New Recipe", new_recipe_path, method: :get %>
+</p>
+
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+    <div class="recipe-name">
+      <%= link_to recipe.name, recipe_path(recipe) %>
+      <%= button_to "Delete", recipe_path(recipe), method: :delete, class: "btn"  %>
+    </div>
+    <div class="recipe-description">
+      <%= recipe.description %>
+    </div>
+    </li>
+  <% end %>
+</ul>
