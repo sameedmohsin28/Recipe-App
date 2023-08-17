@@ -1,2 +1,19 @@
-<h1>Inventories#index</h1>
-<p>Find me in app/views/inventories/index.html.erb</p>
+<p>Inventory Page...</p>
+
+<p>
+<%= button_to "Add Inventory", new_inventory_path, method: :get %>
+</p>
+
+<ul>
+  <% @inventories.each do |Inventory| %>
+    <li>
+    <div class="inventory-name">
+      <%= link_to inventory.name, inventory_path(inventory) %>
+      <%= button_to "Delete", recipe_path(recipe), method: :delete, class: "btn"  %>
+    </div>
+    <div class="inventory-description">
+      <%= inventory.description %>
+    </div>
+    </li>
+  <% end %>
+</ul>
