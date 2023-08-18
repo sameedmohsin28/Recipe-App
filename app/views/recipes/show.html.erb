@@ -1,2 +1,19 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.name %></h1>
+<p>Preparation time: <%= @recipe.preparation_time %></p>
+<p>Cooking time: <%= @recipe.cooking_time %></p>
+<p><%= @recipe.description %></p>
+<%= button_to 'Generate Shopping List' %>
+<%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
+<div>
+  <% @recipe.recipe_foods.each do |recipe_food| %>
+  <div>
+    <span><%= recipe_food.food.name %></span>
+    <span><%= recipe_food.quantity %></span>
+    <span><%= recipe_food.quantity * recipe_food.food.price %></span>
+    <span>
+      <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
+      <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
+    </span>
+  </div>
+  <% end %>
+</div>
