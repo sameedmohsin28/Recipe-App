@@ -1,15 +1,16 @@
-<h1>Add food form here </h1>
-<main>
-  <h2>Add food</h2>
-  <div>
-    <%= form_with(model: @food, url: '/food') do |form| %>
-      <%= form.label :name %>
-      <%= form.text_field :name, required: true %>
-      <%= form.label :measurement_unit %>
-      <%= form.text_field :measurement_unit, required: true %>
-      <%= form.label :price %>
-      <%= form.number_field :price, required: true %>
-      <%= form.submit 'Submit' %>
-    <% end %>
+<div class="container">
+  <div class="form-section">
+    <h2 class="form-title">Add food</h2>
+    <div>
+      <%= form_with(model: @food, url: '/food') do |form| %>
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true, placeholder: 'Enter the food name'  %>
+        <%= form.label :measurement_unit %>
+        <%= form.text_field :measurement_unit, required: true, placeholder: 'Enter measurement unit' %>
+        <%= form.label :price %>
+        <%= form.number_field :price, required: true, placeholder: 'price' %>
+        <%= form.submit 'Submit' %>
+      <% end %>
+    </div>
   </div>
-</main>
+</div>
