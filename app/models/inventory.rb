@@ -1,6 +1,4 @@
 class Inventory < ApplicationRecord
   belongs_to :user
-  has_many :inventory_foods, dependent: :destroy
-
-  validates :quantity, presence: true
+  has_many :inventory_foods
 end
