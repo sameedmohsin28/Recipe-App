@@ -1,8 +1,5 @@
 class RecipesController < ApplicationController
-  def index
-    @user = User.find(current_user.id)
-    @recipes = @user.recipes
-  end
+  def index; end
 
   def show
     @recipe = Recipe.find(params[:id])
@@ -23,9 +20,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def destroy
-    
-  end
+  def destroy; end
 
   private
 
