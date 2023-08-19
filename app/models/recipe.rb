@@ -1,5 +1,4 @@
 class Recipe < ApplicationRecord
-
   belongs_to :user, foreign_key: 'user_id'
 
   has_many :recipe_foods
@@ -16,6 +15,4 @@ class Recipe < ApplicationRecord
   def total_price
     foods.sum(:price)
   end
-
-
 end
