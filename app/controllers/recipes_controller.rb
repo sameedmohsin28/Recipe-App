@@ -10,6 +10,16 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @foods = Food.all
+    @inventories = @recipe.user.inventories
+  end
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+
+    respond_to do |format|
+      format.html { redirect_to @recipe }
+    end
   end
 
   def new
