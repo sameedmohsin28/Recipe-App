@@ -1,7 +1,7 @@
 <% @inventories.each do |inventory| %>
-  <div class="inventory-card card p-3" <%= 'owned' if inventory.user == current_user %> >
+  <div class="inventory-card card p-3 <%= 'owned' if inventory.user == current_user %>">
     <%= link_to inventory, class: "inventory-link" do %>
-      <%= render partial: 'shared/inventory', locals: { inventory: inventory } %>
+     <%= render partial: 'shared/inventory', locals: { inventory: inventory } %>
     <% end %>
     <% if inventory.user == current_user %>
       <%= button_to "Remove", inventory_path(inventory), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", remote: true %>
@@ -10,7 +10,6 @@
     <% end %>
   </div>
 <% end %>
-
 <div class="d-flex justify-content-end">
   <%= link_to "New Inventory", new_inventory_path, class: "btn btn-primary" %>
 </div>
