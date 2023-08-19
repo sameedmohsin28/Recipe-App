@@ -1,8 +1,10 @@
 class Food < ApplicationRecord
-  has_many :inventory_foods
-  has_many :recipe_foods
+  belongs_to :user
+  # Add the necessary attributes
+  attribute :name, :string
+  attribute :measurement_unit, :string
+  attribute :price, :decimal
+  attribute :quantity, :integer
 
-  # validates :name, presence: true
-  # validates :measurement_unit, presence: true
-  # validates :price, numericality: true
+  # ... other associations and validations
 end

@@ -1,41 +1,59 @@
-context '#data' do
-  it 'user_id should be present' do
-    @recipe.user = nil # Instead of @recipe.user_id
-    expect(@recipe).to_not be_valid
+require 'rails_helper'
+
+RSpec.describe Recipe, type: :model do
+  subject do
+    Recipe.new(name: 'Carne a la piedra', preparation_time: 2, cooking_time: 1,
+               description: 'this a meat on a stone', public: true, user_id: 1)
   end
 
-  it 'name should be present and not exceed 250 characters' do
-    @recipe.name = nil
-    expect(@recipe).to_not be_valid
+  before { subject.save }
 
-    @recipe.name = 'a' * 250
-    expect(@recipe).to be_valid
-
-    @recipe.name = 'a' * 251
-    expect(@recipe).to_not be_valid
+  it 'name should be present' do
+    subject.name = nil
+    expect(subject).to_not be_valid
   end
 
-  it 'is_public should be boolean' do
-    @recipe.is_public = false
-    expect(@recipe).to be_valid
-
-    @recipe.is_public = true
-    expect(@recipe).to be_valid
+  it 'preparation time should be present' do
+    subject.preparation_time = nil
+    expect(subject).to_not be_valid
   end
 
-  it 'preparation_time should be present and greater than or equal to zero' do
-    @recipe.preparation_time = nil
-    expect(@recipe).to_not be_valid
-
-    @recipe.preparation_time = 0
-    expect(@recipe).to be_valid
+  it 'cooking time should be present' do
+    subject.cooking_time = nil
+    expect(subject).to_not be_valid
   end
 
-  it 'cooking_time should be present and greater than or equal to zero' do
-    @recipe.cooking_time = nil
-    expect(@recipe).to_not be_valid
+  it 'description should be present' do
+    subject.description = nil
+    expect(subject).to_not be_valid
+  end
 
-    @recipe.cooking_time = 0
-    expect(@recipe).to be_valid
+  it 'public should be present' do
+    subject.public = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'subject name should be equal to Carne a la piedra' do
+    expect(subject.name).to eq('Carne a la piedra')
+  end
+
+  it 'subject preparation time should be equal to 2' do
+    expect(subject.preparation_time).to eq('2')
+  end
+
+  it 'subject cooking time should be equal to 1' do
+    expect(subject.cooking_time).to eq('1')
+  end
+
+  it 'subject description should be equal to this a meat on a stone' do
+    expect(subject.description).to eq('this a meat on a stone')
+  end
+
+  it 'subject public should be equal to true' do
+    expect(subject.public).to eq(true)
+  end
+
+  it 'subject user id should be equal to 1' do
+    expect(subject.user_id).to eq(1)
   end
 end

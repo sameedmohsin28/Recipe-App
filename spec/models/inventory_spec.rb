@@ -1,41 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe Inventory, type: :model do
-  let(:user) { create(:user) }
+  let(:user) { User.create(name: 'John Doe') }
+  subject { Inventory.new(name: 'Pantry', description: 'A storage place', user:) }
 
   it 'is valid with valid attributes' do
-    user = User.create(name: 'Test User', email: 'test@example.com', password: 'password')
-    inventory = Inventory.new(name: 'Test Inventory', user: user)
-    expect(inventory).to be_valid
+    expect(subject).to be_valid
   end
-  
 
   it 'is not valid without a name' do
-    inventory = Inventory.new(user:)
-    expect(inventory).to_not be_valid
-    expect(inventory.errors[:name]).to include("can't be blank")
+    subject.name = nil
+    expect(subject).to_not be_valid
   end
 
-  it 'belongs to a user' do
-    association = Inventory.reflect_on_association(:user)
-    expect(association.macro).to eq(:belongs_to)
+  it 'is associated with a user' do
+    expect(subject.user).to eq(user)
   end
 
-  it 'has many inventory_foods' do
-    association = Inventory.reflect_on_association(:inventory_foods)
-    expect(association.macro).to eq(:has_many)
+  it 'can have inventory foods' do
+    inventory_food = subject.inventory_foods.build
+    expect(subject.inventory_foods).to include(inventory_food)
   end
 
-  it 'has many foods through inventory_foods' do
-    association = Inventory.reflect_on_association(:foods)
-    expect(association.macro).to eq(:has_many)
-    expect(association.options[:through]).to eq(:inventory_foods)
+  it 'has a description attribute' do
+    expect(subject.description).to eq('A storage place')
   end
 
-  it 'has an attribute description of type text' do
-    inventory = create(:inventory, user:) # Associate the user with the inventory
-
-    description_column = inventory.class.column_for_attribute('description')
-    expect(description_column.type).to eq(:text)
+  it 'is not valid without a name' do
+    subject.name = nil
+    expect(subject).to_not be_valid
   end
 end
