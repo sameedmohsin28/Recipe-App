@@ -24,7 +24,7 @@ class ShoppingListsController < ApplicationController
         inventory_food_price_difference = inventory_food.food.price * inventory_food.quantity
         quantity = recipe_food.quantity - inventory_food.quantity
       end
-      
+
       price_difference = recipe_food_price_difference - inventory_food_price_difference
       next unless price_difference.positive?
 
