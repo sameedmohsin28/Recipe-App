@@ -5,14 +5,6 @@ class Recipe < ApplicationRecord
   has_many :recipe_foods
   has_many :foods, through: :recipe_foods
 
-  def total_price
-    foods.sum(:price)
-  end
-end
-
-  belongs_to :user
-  has_many :recipe_foods, dependent: :destroy
-
   validates :name, presence: true
   validates :preparation_time, presence: true
   validates :cooking_time, presence: true
@@ -20,4 +12,8 @@ end
   validates :public, presence: true, allow_blank: true
 
   attribute :public, :boolean, default: true
+
+  def total_price
+    foods.sum(:price)
+  end
 end
