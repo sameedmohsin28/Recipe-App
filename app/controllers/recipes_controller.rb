@@ -13,6 +13,15 @@ class RecipesController < ApplicationController
     @inventories = @recipe.user.inventories
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+
+    respond_to do |format|
+      format.html { redirect_to @recipe }
+    end
+  end
+
   def new
     @recipe = Recipe.new
   end
