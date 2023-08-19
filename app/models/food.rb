@@ -9,5 +9,5 @@ class Food < ApplicationRecord
   # ... other associations and validations
   validates :name, presence: true
   validates :measurement_unit, presence: true
-  validates :price, numericality: {less_than: 1_000_000.0, greater_than_or_equal_to: 0.001}
+  validates :price, numericality: { less_than: 1_000_000.0, greater_than_or_equal_to: 0.001 }
 end

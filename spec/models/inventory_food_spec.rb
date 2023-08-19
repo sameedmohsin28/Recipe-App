@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 RSpec.describe InventoryFood, type: :model do
   let(:user) { User.create(id: 1, name: 'Paul', email: 'paul@test.com') }
   let(:inventory) { Inventory.create(id: 1, user_id: user.id, name: 'Joll of Rice', description: 'I love it') }
