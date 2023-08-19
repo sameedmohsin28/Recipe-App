@@ -11,10 +11,12 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= current_user.name %>
-      <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% end %>
+    <div class="logged-in-user-details-container">
+      <% if user_signed_in? %>
+        <p>User Logged in: <span class="logged-in-user-name"><%= current_user.name %></span></p>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% end %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
