@@ -5,6 +5,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+
+    respond_to do |format|
+      format.html { redirect_to @recipe }
+    end
+  end
+
   def new
     @recipe = Recipe.new
   end

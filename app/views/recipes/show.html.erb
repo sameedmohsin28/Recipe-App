@@ -4,16 +4,29 @@
 <p><%= @recipe.description %></p>
 <%= button_to 'Generate Shopping List' %>
 <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
+
+<div>
+  <%= form_with model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, local: true do |form| %>
+    <div class="field">
+      <%= form.hidden_field :public, class: 'toggle-switch', data: { 'turbo-frame': 'recipe-details' } %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Toggle Public' %>
+    </div>
+  <% end %>
+  <p>Public:<%= @recipe.public ? 'Yes' : 'No' %></p>
+</div>
+
 <div>
   <% @recipe.recipe_foods.each do |recipe_food| %>
-  <div>
-    <span><%= recipe_food.food.name %></span>
-    <span><%= recipe_food.quantity %></span>
-    <span><%= recipe_food.quantity * recipe_food.food.price %></span>
-    <span>
-      <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
-      <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
-    </span>
-  </div>
+    <div>
+      <span><%= recipe_food.food.name %></span>
+      <span><%= recipe_food.quantity %></span>
+      <span><%= recipe_food.quantity * recipe_food.food.price %></span>
+      <span>
+        <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
+        <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
+      </span>
+    </div>
   <% end %>
 </div>
