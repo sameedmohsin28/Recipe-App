@@ -9,68 +9,76 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
- @import "bootstrap";
- 
- .container {
-    margin: 5% 10%;
- }
 
- table{
-    border-collapse:collapse;
+/* Import Bootstrap */
+@import "bootstrap";
+
+/* Apply styles to the container */
+.container {
+    margin: 5% 10%;
+}
+
+/* Style the table */
+table {
+    border-collapse: collapse;
     width: 100%;
 }
 
- th, td {
+th,
+td {
     padding: 15px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-  }
+}
 
-  th {
+th {
     background-color: #ccc;
-    }
+}
 
-  tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-  a {
+a {
     text-decoration: none;
     color: #000;
-  }
+}
 
-  .btn-container {
+/* Style button container */
+.btn-container {
     margin: 3rem 0;
     text-align: right;
-  }
+}
 
-  .btn {
+.btn {
     padding: 12px 16px;
     border: 1px solid #ccc;
     text-align: center;
     border-radius: 5px;
     box-shadow: 2px 2px #000;
-  }
+}
 
-  .form-section  {
+/* Style form section */
+.form-section {
     width: 50%;
     margin: 0 auto;
-  }
+}
 
-  .form-title  {
+.form-title {
     text-align: center;
     margin-bottom: 3rem;
     text-transform: capitalize;
-  }
+}
 
-  .hidden{
+.hidden {
     display: none;
-  }
+}
 
-
-  input[type=text], input[type=number], select {
+/* Style form inputs and select */
+input[type="text"],
+input[type="number"],
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -78,16 +86,18 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
-  
-  input[type=submit] {
+}
+
+/* Style submit button */
+input[type="submit"] {
     width: 50%;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
+}
+
+/* Fix indentation and whitespace issues */
