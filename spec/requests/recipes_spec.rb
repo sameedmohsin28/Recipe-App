@@ -5,7 +5,7 @@ RSpec.describe 'Recipes', type: :request do
 
   it 'returns http success' do
     @user = User.create(name: 'Burger', email: 'burger@gmail.com', password: '123456',
-                          password_confirmation: '123456')
+                        password_confirmation: '123456')
 
     login_as(@user, scope: :user)
 
