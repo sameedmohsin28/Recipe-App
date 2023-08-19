@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :homes, only: [:index]
   resources :recipes, only: [:index, :new, :create, :show, :destroy] do
+    member do
+      patch :toggle_public
+    end
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
   # root "articles#index"
