@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe InventoryFood, type: :model do
   let(:user) { User.create(id: 1, name: 'Paul', email: 'paul@test.com') }
   let(:inventory) { Inventory.create(id: 1, user_id: user.id, name: 'Joll of Rice', description: 'I love it') }
-  let(:food) {Food.create(id: 1, name: 'rice', measurement_unit: 'gram', price: 12)}
+  let(:food) { Food.create(id: 1, name: 'rice', measurement_unit: 'gram', price: 12) }
 
   subject { InventoryFood.create(quantity: 10, inventory_id: inventory.id, food_id: food.id) }
 
