@@ -9,8 +9,6 @@ class Recipe < ApplicationRecord
     foods.sum(:price)
   end
 end
-<<<<<<< HEAD
-=======
 
   belongs_to :user
   has_many :recipe_foods, dependent: :destroy
@@ -23,4 +21,3 @@ end
 
   attribute :public, :boolean, default: true
 end
->>>>>>> 410ac617b8d12f271d1cf168b013b35fe745cf9c
