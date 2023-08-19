@@ -82,5 +82,3 @@ gem 'cancancan'
 gem 'bootstrap'
 
 gem 'sassc-rails'
-
-gem 'sassc-rails'
