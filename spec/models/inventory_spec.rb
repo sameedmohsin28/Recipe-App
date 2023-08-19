@@ -4,9 +4,11 @@ RSpec.describe Inventory, type: :model do
   let(:user) { create(:user) }
 
   it 'is valid with valid attributes' do
-    inventory = Inventory.new(name: 'Test Inventory', user:)
+    user = User.create(name: 'Test User', email: 'test@example.com', password: 'password')
+    inventory = Inventory.new(name: 'Test Inventory', user: user)
     expect(inventory).to be_valid
   end
+  
 
   it 'is not valid without a name' do
     inventory = Inventory.new(user:)
