@@ -5,7 +5,7 @@
       <% @public_recipes.each do |public_recipe| %>
         <div class="individual-public-recipes-container">
           <div class="recipe-name-and-user-name-container">
-            <div class="recipe-name"><%= public_recipe.name %></div>
+            <%= link_to public_recipe.name, recipe_path(public_recipe), class: 'recipe-name' %>
             <div>By: <%= public_recipe.user.name %></div>
           </div>
           <div class="food-count-and-total-price-container">
