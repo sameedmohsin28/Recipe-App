@@ -37,11 +37,10 @@
           </div>
           <div class="modal-body">
             <p>Choose an inventory to use</p>
-            <%= form_tag( method: :get) do %>
-              <%= hidden_field_tag :recipe_id, @recipe.id %>
-              <%= select_tag(:inventory_id, options_for_select(@inventories.map { |inv| [inv.name, inv.id] })) %>
-              <%= submit_tag('Generate Shopping List') %>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= form_tag(shopping_list_path , method: 'get') do %>
+                <%= hidden_field_tag :recipe_id, @recipe.id %>
+                <%= select_tag(:inventory_id, options_for_select(@inventories.map { |inv| [inv.name, inv.id] }), class: 'mb-5') %>
+                <%= submit_tag('Generate Shopping List', class: 'mt-5', name: nil) %>
             <% end %>
           </div>
         </div>
