@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: Recipe_App_development
+  database: Recipe_App_production
+  username: postgres
+  password: 123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -32,7 +34,7 @@ development:
   username: postgres
 
   # The password associated with the postgres role (username).
-  password: sameeddatabase
+  password: 123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -59,8 +61,9 @@ test:
   <<: *default
   database: Recipe_App_test
   host: localhost
+  database: Recipe_App_production
   username: postgres
-  password: sameeddatabase
+  password: 123
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,4 +89,4 @@ production:
   <<: *default
   database: Recipe_App_production
   username: postgres
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
+  password: 123
