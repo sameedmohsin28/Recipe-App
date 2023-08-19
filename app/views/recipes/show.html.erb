@@ -1,7 +1,12 @@
 <h1><%= @recipe.name %></h1>
+
+<p>Preparation time: <%= @recipe.preparation_time %></p>
+<p>Cooking time: <%= @recipe.cooking_time %></p>
+<p><%= @recipe.description %></p>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  Generate Shopping List
 </button>
 
 <!-- Modal -->
@@ -9,23 +14,22 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Shopping list</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <p>Choose an inventory to use</p>
+        <%= form_tag( method: :get) do %>
+          <%= hidden_field_tag :recipe_id, @recipe.id %>
+          <%= select_tag(:inventory_id, options_for_select(@inventories.map { |inv| [inv.name, inv.id] })) %>
+          <%= submit_tag('Generate Shopping List') %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-<p>Preparation time: <%= @recipe.preparation_time %></p>
-<p>Cooking time: <%= @recipe.cooking_time %></p>
-<p><%= @recipe.description %></p>
-<%= button_to 'Generate Shopping List' %>
+
 <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
 <div>
   <% @recipe.recipe_foods.each do |recipe_food| %>
