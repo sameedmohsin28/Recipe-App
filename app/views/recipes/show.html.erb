@@ -1,59 +1,74 @@
-<h1><%= @recipe.name %></h1>
+<div class="recipe-show-page-main-container">
+  <div class="recipe-show-page-sub-container">
 
-<p>Preparation time: <%= @recipe.preparation_time %></p>
-<p>Cooking time: <%= @recipe.cooking_time %></p>
-<p><%= @recipe.description %></p>
+    <h1><%= @recipe.name %></h1>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Generate Shopping List
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Shopping list</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="recipe-details-header-container">
+      <div class="recipe-details-header">
+        <p>Preparation time: <strong><%= @recipe.preparation_time %></strong></p>
+        <p>Cooking time: <strong><%= @recipe.cooking_time %></strong></p>
+        <p><%= @recipe.description %></p>
       </div>
-      <div class="modal-body">
-        <p>Choose an inventory to use</p>
-        <%= form_tag( method: :get) do %>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <%= select_tag(:inventory_id, options_for_select(@inventories.map { |inv| [inv.name, inv.id] })) %>
-          <%= submit_tag('Generate Shopping List') %>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <% end %>
+      <div class="public-button-container">
+      <%= form_with model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, local: true do |form| %>
+        <div class="field">
+          <%= form.hidden_field :public, class: 'toggle-switch', data: { 'turbo-frame': 'recipe-details' } %>
+        </div>
+        <div class="public-button-action">
+          <%= form.submit 'Toggle Public' %>
+        </div>
+      <% end %>
+      <p>Public: <strong><%= @recipe.public ? 'Yes' : 'No' %></strong></p>
+    </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Generate Shopping List
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Shopping list</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Choose an inventory to use</p>
+            <%= form_tag( method: :get) do %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= select_tag(:inventory_id, options_for_select(@inventories.map { |inv| [inv.name, inv.id] })) %>
+              <%= submit_tag('Generate Shopping List') %>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+
+    <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: "modal-title fs-5 add-ingredient-button" %>
+
+    <ul class="recipe-foods-container">
+      <li class="recipe-foods-header">
+        <span class="food-header"><strong>Food</strong></span>
+        <span class="quantity-header"><strong>Quantity</strong></span>
+        <span class="value-header"><strong>Value</strong></span>
+        <span class="actions-header"><strong>Actions</strong></span>
+      </li>
+      <% @recipe.recipe_foods.each do |recipe_food| %>
+        <li class="recipe-foods-body">
+          <span class="food-body"><%= recipe_food.food.name %></span>
+          <span class="quantity-body"><%= recipe_food.quantity %></span>
+          <span class="value-body"><%= recipe_food.quantity * recipe_food.food.price %></span>
+          <span class="actions-body">
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
+            <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+
   </div>
-</div>
-
-<%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
-
-<div>
-  <%= form_with model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, local: true do |form| %>
-    <div class="field">
-      <%= form.hidden_field :public, class: 'toggle-switch', data: { 'turbo-frame': 'recipe-details' } %>
-    </div>
-    <div class="actions">
-      <%= form.submit 'Toggle Public' %>
-    </div>
-  <% end %>
-  <p>Public:<%= @recipe.public ? 'Yes' : 'No' %></p>
-</div>
-
-<div>
-  <% @recipe.recipe_foods.each do |recipe_food| %>
-    <div>
-      <span><%= recipe_food.food.name %></span>
-      <span><%= recipe_food.quantity %></span>
-      <span><%= recipe_food.quantity * recipe_food.food.price %></span>
-      <span>
-        <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
-        <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
-      </span>
-    </div>
-  <% end %>
 </div>
