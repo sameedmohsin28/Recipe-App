@@ -1,2 +1,13 @@
-<h1>Inventories#show</h1>
+<h1>Inventories#show here</h1>
 <p>Find me in app/views/inventories/show.html.erb</p>
+<%= link_to 'Add Food', new_inventory_inventory_food_path(@inventory) %>
+
+<ul>
+<% @inventory_foods.includes(:food.name).each do |inventory_food| %>
+    <li>
+       <p><%= inventory_food.quantity %></p>
+       <p><%= inventory_food.food.name %></p>
+       <%= button_to "Delete", inventory_inventory_food_path(@inventory, inventory_food.id), method: :delete %>
+    </li>
+<% end %>
+</ul>
