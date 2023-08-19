@@ -62,9 +62,7 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
-<<<<<<< HEAD
-=======
+
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
   end
 end
->>>>>>> 410ac617b8d12f271d1cf168b013b35fe745cf9c
