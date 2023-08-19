@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'shopping_list/index'
+  # get 'food/index'
   devise_for :users
   get 'public_recipes/index'
   get 'inventories/index'
@@ -22,6 +24,14 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :new, :create, :show, :destroy] do
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
+  # root "articles#index"
+  resources :food, only: [:index, :new, :create, :destroy]
   resources :public_recipes, only: [:index]
-  resources :inventories, only: [:index, :new, :create, :show, :destroy]
+  resources :inventories, only: [:index, :new, :create, :show, :destroy] do
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
 end
+
+# resources :inventories, only: [:index, :new, :create, :show, :destroy] do
+#   resources :inventory_foods, only: [:index]
+# end

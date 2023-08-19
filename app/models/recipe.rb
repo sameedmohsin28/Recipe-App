@@ -16,4 +16,6 @@ class Recipe < ApplicationRecord
   def total_price
     foods.sum(:price)
   end
+
+
 end
