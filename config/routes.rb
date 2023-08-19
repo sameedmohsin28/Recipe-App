@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   resources :inventories, only: [:index, :new, :create, :show, :destroy] do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
+  resources :users do
+    resources :recipes
+  end
+  
 end
 
 # resources :inventories, only: [:index, :new, :create, :show, :destroy] do
