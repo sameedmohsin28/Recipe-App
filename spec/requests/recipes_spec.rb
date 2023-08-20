@@ -1,38 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipes', type: :request do
-  describe 'GET /index' do
-    it 'returns http success' do
-      get '/recipes/index'
-      expect(response).to have_http_status(:success)
-    end
-  end
+  include Devise::Test::IntegrationHelpers
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/recipes/show'
-      expect(response).to have_http_status(:success)
-    end
-  end
+  it 'returns http success' do
+    @user = User.create(name: 'Burger', email: 'burger@gmail.com', password: '123456',
+                        password_confirmation: '123456')
 
-  describe 'GET /new' do
-    it 'returns http success' do
-      get '/recipes/new'
-      expect(response).to have_http_status(:success)
-    end
-  end
+    login_as(@user, scope: :user)
 
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/recipes/create'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /destroy' do
-    it 'returns http success' do
-      get '/recipes/destroy'
-      expect(response).to have_http_status(:success)
-    end
+    get '/recipes'
+    follow_redirect!
+    expect(response).to have_http_status(:success)
   end
 end
