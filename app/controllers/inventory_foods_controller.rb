@@ -9,7 +9,7 @@ class InventoryFoodsController < ApplicationController
     @inventory_food.inventory_id = inventory_id
 
     if @inventory_food.save
-      redirect_to inventory_path(inventory_id), notice: 'Food has been added.'
+      redirect_to inventory_path(inventory_id), notice: 'Inventory Food has been added.'
     else
       flash.now[:alert] = 'Error! Unable to add food.'
       redirect_to inventory_path(inventory_id), notice: 'Unable to add food has.'

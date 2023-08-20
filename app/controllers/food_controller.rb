@@ -10,10 +10,10 @@ class FoodController < ApplicationController
   def create
     @food = Food.new(food_params)
     if @food.save
-      redirect_to new_food_path, notice: 'Food has been added.'
+      redirect_to food_index_path, notice: 'Food has been added.'
     else
       flash.now[:alert] = 'Error! Unable to add food.'
-      render :show
+      render :new
     end
   end
 

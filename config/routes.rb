@@ -27,7 +27,6 @@ Rails.application.routes.draw do
     end
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
-  # root "articles#index"
   resources :food, only: [:index, :new, :create, :destroy]
   resources :public_recipes, only: [:index]
   resources :inventories, only: [:index, :new, :create, :show, :destroy] do
