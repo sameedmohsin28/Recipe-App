@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <div class="logged-in-user-details-container">
+      <% if user_signed_in? %>
+        <p>User Logged in: <span class="logged-in-user-name"><%= current_user.name %></span></p>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% end %>
+    </div>
+    <div class="interface-page-buttons-container">
+      <div class="public-recipes-page-button"><%= link_to 'Public Recipes Page', public_recipes_index_path %></div>
+      <div class="recipes-page-button"><%= link_to 'Recipes Page', recipes_index_path %></div>
+      <div class="inventories-page-button"><%= link_to 'Inventories page', inventories_index_path %></div>
+      <div class="food-page-button"><%= link_to 'Foods page', food_index_path %></div>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

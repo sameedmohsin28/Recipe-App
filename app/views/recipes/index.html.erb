@@ -1,0 +1,28 @@
+<div class="recipe-index-page-main-container">
+  <div class="recipe-index-page-sub-container">
+    <div class="recipeHeader">
+      <h1> My Recipes </h1>
+      <div class="addRecipeBtn">
+        <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <hr>
+    <ul class="all-recipes-container">
+      <% @recipes.each do |recipe| %>
+        <li class="recipeCont">
+          <div class="recipeLeft">
+            <%= link_to recipe.name, recipe_path(recipe), class: 'recipeTitle' %>
+            <% if recipe.user == current_user %>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", remote: true %>
+            <% else %>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary disabled", remote: true, disabled: true %>
+            <% end %>
+          </div>
+          <div class="recipeRight">
+            <p class="recipeDesc"><strong>Description:</strong> <%= recipe.description %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

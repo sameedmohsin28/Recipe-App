@@ -1,0 +1,387 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+
+* {
+  text-decoration: none;
+  list-style: none;
+}
+
+/* Import Bootstrap */
+@import "bootstrap";
+
+/* Apply styles to the container */
+.container {
+  margin: 5% 10%;
+}
+
+/* Style the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Style button container */
+.btn-container {
+  margin: 3rem 0;
+  text-align: right;
+}
+
+.btn {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px #000;
+}
+
+/* Style form section */
+.form-section {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style form inputs and select */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style submit button */
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+// -------------------------Application layout page----------------------
+.logged-in-user-details-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.logged-in-user-name {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.interface-page-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+// ----------------------Home Page------------------------
+.home-page-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px;
+}
+
+.home-page-sub-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  min-width: 540px;
+  align-items: center;
+  gap: 60px;
+}
+
+.home-page-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.public-recipes-page-button,
+.recipes-page-button,
+.inventories-page-button,
+.food-page-button {
+  font-size: 30px;
+  font-weight: 700;
+  border: 1px solid rgb(0, 0, 85);
+  border-radius: 15px;
+  padding: 3px 10px;
+  background-color: rgb(224, 233, 236);
+}
+
+.public-recipes-page-button {
+  background-color: rgb(201, 247, 174);
+}
+
+.recipes-page-button {
+  background-color: rgb(206, 174, 247);
+}
+
+.inventories-page-button {
+  background-color: rgb(130, 184, 69);
+}
+
+// -----------------------recipe index page-------------------------
+.recipe-index-page-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-index-page-sub-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  min-width: 540px;
+  align-items: center;
+}
+
+.recipeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-recipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.recipeCont {
+  border: 1px solid black;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 20px;
+}
+
+.recipeLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipeTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.removeBtn {
+  border: 1px solid rgb(0, 0, 85);
+  padding: 3px 10px;
+  background-color: rgb(224, 233, 236);
+}
+
+// --------------------------- Recipe Show page -------------------------
+.recipe-show-page-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px;
+}
+
+.recipe-show-page-sub-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  min-width: 540px;
+  align-items: center;
+  gap: 15px;
+}
+
+.recipe-details-header-container {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  gap: 20px;
+  width: 100%;
+}
+
+.add-ingredient-button {
+  margin-top: 25px;
+  background-color: pink;
+  padding: 3px 10px;
+  border: 1px solid purple;
+  border-radius: 5px;
+}
+
+.recipe-foods-container {
+  width: 100%;
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-foods-header,
+.recipe-foods-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.recipe-foods-header {
+  border-top: 1px solid black;
+}
+
+.actions-body {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+// -----------------------public recipes index page-------------------------
+.public-recipes-index-page-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px;
+}
+
+.public-recipes-index-page-sub-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  min-width: 540px;
+  align-items: center;
+}
+
+.all-public-recipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.individual-public-recipes-container {
+  border: 1px solid black;
+  width: 100%;
+  padding: 10px 15px;
+  display: grid;
+  grid-template-columns: 37% 58%;
+  gap: 5%;
+}
+
+.recipe-name-and-user-name-container,
+.food-count-and-total-price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-name {
+  font-size: 37px;
+  font-weight: 700;
+}
+
+// --------------------------- Inventory Show page -------------------------
+.inventory-show-page-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px;
+}
+
+.inventory-show-page-sub-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 70%;
+  min-width: 540px;
+  align-items: center;
+  gap: 15px;
+}
+
+.add-food-button {
+  border: 1px solid rgb(0, 0, 85);
+  padding: 3px 10px;
+  background-color: rgb(224, 233, 236);
+}
+
+.inventory-foods-container {
+  width: 100%;
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inventory-foods-header,
+.inventory-foods-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.inventory-foods-header {
+  border-top: 1px solid black;
+}

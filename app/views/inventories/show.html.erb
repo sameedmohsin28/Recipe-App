@@ -1,0 +1,23 @@
+<div class="inventory-show-page-main-container">
+  <div class="inventory-show-page-sub-container">
+		<h1><%= @inventory.name %></h1>
+		<%= link_to 'Add Food', new_inventory_inventory_food_path(@inventory), class: 'add-food-button' %>
+
+		<ul class="inventory-foods-container">
+			<li class="inventory-foods-header">
+        <span class="food-header"><strong>Food</strong></span>
+        <span class="quantity-header"><strong>Quantity</strong></span>
+        <span class="actions-header"><strong>Actions</strong></span>
+      </li>
+			<% @inventory_foods.includes(:food.name).each do |inventory_food| %>
+				<li class="inventory-foods-body">
+					<p class="quantity-body"><%= inventory_food.food.name %></p>
+					<p class="food-body"><%= inventory_food.quantity %></p>
+					<% if @inventory.user == current_user %>
+						<%= button_to "Delete", inventory_inventory_food_path(@inventory, inventory_food.id), method: :delete, class: "actions-body" %>
+					<% end %>
+				</li>
+			<% end %>
+		</ul>
+  </div>
+</div>
