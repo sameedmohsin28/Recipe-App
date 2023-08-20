@@ -62,8 +62,10 @@
           <span class="quantity-body"><%= recipe_food.quantity %></span>
           <span class="value-body"><%= recipe_food.quantity * recipe_food.food.price %></span>
           <span class="actions-body">
-            <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
-            <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
+            <% if @recipe.user == current_user %>
+              <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.food, recipe_food) %>
+              <%= button_to 'Remove', recipe_recipe_food_path(recipe_food.food, recipe_food), method: :delete %>
+            <% end %>
           </span>
         </li>
       <% end %>

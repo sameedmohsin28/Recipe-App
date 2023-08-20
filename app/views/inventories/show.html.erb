@@ -13,7 +13,9 @@
 				<li class="inventory-foods-body">
 					<p class="quantity-body"><%= inventory_food.food.name %></p>
 					<p class="food-body"><%= inventory_food.quantity %></p>
-					<%= button_to "Delete", inventory_inventory_food_path(@inventory, inventory_food.id), method: :delete, class: "actions-body" %>
+					<% if @inventory.user == current_user %>
+						<%= button_to "Delete", inventory_inventory_food_path(@inventory, inventory_food.id), method: :delete, class: "actions-body" %>
+					<% end %>
 				</li>
 			<% end %>
 		</ul>

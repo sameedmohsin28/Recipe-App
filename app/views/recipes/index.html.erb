@@ -13,7 +13,9 @@
           <div class="recipeLeft">
             <%= link_to recipe.name, recipe_path(recipe), class: 'recipeTitle' %>
             <% if recipe.user == current_user %>
-              <%= link_to 'Remove', recipe_path(recipe), data: { turbo_method: :delete, confirm: 'Are you sure you want to remove this recipe?' }, class: 'removeBtn' %>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", remote: true %>
+            <% else %>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary disabled", remote: true, disabled: true %>
             <% end %>
           </div>
           <div class="recipeRight">
